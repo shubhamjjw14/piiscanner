@@ -203,7 +203,7 @@ shubhamjjw14@gmail.com.
 ## Development
 
 ```bash
-git clone <this repository> && cd piiscanner
+git clone https://github.com/shubhamjjw14/piiscanner.git && cd piiscanner
 python3 -m venv .venv && .venv/bin/pip install -e '.[dev]'
 .venv/bin/pytest
 ```
@@ -216,9 +216,9 @@ python -m piiscanner.testdata.load_mysql --admin-url mysql://root@127.0.0.1:3306
 docker run -d --name piiscanner-mongo -p 27017:27017 mongo:7 && python -m piiscanner.testdata.load_mongodb
 ```
 
-[CODE_WALKTHROUGH.md](CODE_WALKTHROUGH.md) explains the internals, stage by
+[CODE_WALKTHROUGH.md](https://github.com/shubhamjjw14/piiscanner/blob/main/CODE_WALKTHROUGH.md) explains the internals, stage by
 stage. `scripts/explain.py` shows why a column was or was not flagged.
 
 ## Licence
 
-Apache 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+Apache 2.0. See [LICENSE](https://github.com/shubhamjjw14/piiscanner/blob/main/LICENSE) and [NOTICE](https://github.com/shubhamjjw14/piiscanner/blob/main/NOTICE).

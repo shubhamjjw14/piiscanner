@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -33,6 +33,12 @@ dependencies = [
     # PostgreSQL driver (psycopg 3).  The binary wheel needs no system libpq.
     "psycopg[binary]>=3.1",
 ]
+
+[project.urls]
+Homepage = "https://github.com/shubhamjjw14/piiscanner"
+Source = "https://github.com/shubhamjjw14/piiscanner"
+Issues = "https://github.com/shubhamjjw14/piiscanner/issues"
+Changelog = "https://github.com/shubhamjjw14/piiscanner/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
