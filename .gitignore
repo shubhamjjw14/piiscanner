@@ -10,7 +10,7 @@ dist/
 *findings*.json
 
 # Audit working directory: real-schema samples and labels.
-audit/
+/audit/
 
 # Real connection strings.
 .env
