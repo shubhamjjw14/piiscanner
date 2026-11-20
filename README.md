@@ -1,5 +1,5 @@
 # piiscanner
-
+Open-source PII scanner for India's DPDP Act
 Find the personal data in your database, without writing to it and without
 keeping any of it.
 
