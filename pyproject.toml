@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "piiscanner"
+version = "1.0.0"
+description = "Read-only personal data discovery for MySQL, PostgreSQL and MongoDB, built for India's DPDP Act"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Shubham Kumar" }]
+requires-python = ">=3.11"
+keywords = ["pii", "dpdp", "privacy", "data-discovery", "mysql", "postgresql", "mongodb", "aadhaar", "pan"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Database",
+    "Topic :: Security",
+]
+dependencies = [
+    "pydantic>=2.0",
+    "click>=8.1",
+    "rich>=13.0",
+    "PyMySQL>=1.1",
+    "pymongo>=4.6",
+    # PostgreSQL driver (psycopg 3).  The binary wheel needs no system libpq.
+    "psycopg[binary]>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+piiscanner = "piiscanner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["piiscanner*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

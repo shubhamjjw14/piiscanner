@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# Scan output names real tables and columns, even with values masked.
+*findings*.json
+
+# Audit working directory: real-schema samples and labels.
+audit/
+
+# Real connection strings.
+.env
