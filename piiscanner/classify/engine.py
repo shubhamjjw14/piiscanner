@@ -388,6 +388,8 @@ def run_scan(
             if config.record_inventory:
                 result.fields.append(_sampled_record(sample, flagged=bool(findings)))
 
+    result.tables_not_read = sorted({f"{dataset}.{collection}" for dataset, collection, _
+                                     in getattr(connector, "sampling_errors", [])})
     result.finished_at = datetime.now(timezone.utc)
     log.info(
         "scan complete: %d datasets, %d fields examined, %d findings",

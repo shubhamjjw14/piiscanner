@@ -63,8 +63,10 @@ piiscanner scan --source mysql://piiscanner_ro:PASSWORD@host:3306/shop --out fin
 piiscanner scan --source postgresql://piiscanner_ro:PASSWORD@host:5432/shop
 piiscanner scan --source mongodb://host:27017/shop --include 'prod_*' --exclude '*_archive'
 
-piiscanner report findings.json --format text --all     # read a saved scan again
+piiscanner report findings.json --format text --all
 ```
+
+The last line reads a saved scan again.
 
 | Option | |
 |---|---|
@@ -78,6 +80,30 @@ piiscanner report findings.json --format text --all     # read a saved scan agai
 
 On PostgreSQL every schema is scanned unless you add `?schema=name` to the
 connection string or pass `--dataset`.
+
+## Use from Python
+
+```python
+import piiscanner
+
+result = piiscanner.scan("mysql://piiscanner_ro:PASSWORD@host:3306/shop")
+
+for f in result.findings:
+    print(f.collection, f.field, f.pii_type.value, f.confidence, f.evidence)
+# kyc aadhaar_no AADHAAR 0.99 ['54XXXXXXXX62', '71XXXXXXXX51']
+
+if result.tables_not_read:
+    print("not covered:", result.tables_not_read)
+```
+
+`scan()` takes the same choices as the command: `sample_size`, `include`,
+`exclude` and `datasets`. It connects, scans and closes, with the same
+guarantees -- read-only, evidence masked, nothing kept. The result is a
+`ScanResult`; `result.model_dump_json()` gives the JSON `--out` writes.
+
+`tables_not_read` names tables that could not be read (a permission, a
+timeout). They are not covered by the result -- which is not the same as
+holding no personal data.
 
 ## What it finds
 

@@ -283,6 +283,12 @@ class ScanResult(BaseModel):
     fields_examined: int = 0
     fields_skipped: int = 0
 
+    #: Tables that could not be read, as ``dataset.table``.  Not the same as a
+    #: table holding no personal data: nobody looked.  Names only -- a
+    #: driver's error text can quote the data it choked on, so the reasons go
+    #: to the log, never here.
+    tables_not_read: list[str] = Field(default_factory=list)
+
     findings: list[Finding] = Field(default_factory=list)
 
     #: Every field looked at, flagged or not.  Populated only when the scan was
